@@ -59,6 +59,7 @@ function joinroom() {
 socket.on("server_joinroom1", (room) => {
   document.getElementById("room").innerHTML =
     "<h3> You are in " + room + "</h3>";
+  document.getElementById("listchat").innerHTML = "";
 });
 // send join room to room
 socket.on("server_joinroomall", (data) => {
