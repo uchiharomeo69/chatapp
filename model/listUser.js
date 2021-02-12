@@ -7,6 +7,7 @@ module.exports.joinRoom = (id, name, room) => {
     return listUser.push({ id, name, room, ischatting });
   } else {
     listUser[index].room = room;
+    listUser[index].ischatting = false;
   }
 };
 exports.getListChatting = (room) => {
