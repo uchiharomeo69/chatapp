@@ -3,7 +3,7 @@ const app = express();
 const server = require("http").createServer(app);
 
 const con = require("./controller/controller");
-server.listen(8080, () => {
+server.listen(8080 || process.env.PORT, () => {
   console.log("thanh cong");
 });
 //create socket io

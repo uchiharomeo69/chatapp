@@ -12,7 +12,7 @@ function displayIschatting(chatting) {
 displayIschatting(0);
 
 // create socket
-const socket = io();
+const socket = io("https://huynehihi.herokuapp.com/");
 //login
 function login() {
   let username = document.getElementById("username").value.trim();
