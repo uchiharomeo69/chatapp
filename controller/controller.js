@@ -18,7 +18,6 @@ exports.joinRoomCon = (io, socket, room) => {
   let user = users.getById(socket.id);
   let oldroom = user.room;
   socket.leave(oldroom);
-
   users.joinRoom(user.id, user.name, room);
   socket.join(room);
   socket.emit("server_joinroom1", room);
@@ -54,6 +53,7 @@ exports.sendtext = (io, socket, mess) => {
 exports.focusin = (io, socket) => {
   let user = users.getById(socket.id);
   if (user != undefined) {
+    // console.log(user.room);
     user.ischatting = true;
     socket.broadcast
       .to(user.room)

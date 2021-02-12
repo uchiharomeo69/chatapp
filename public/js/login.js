@@ -12,7 +12,8 @@ function displayIschatting(chatting) {
 displayIschatting(0);
 
 // create socket
-const socket = io("https://huynehihi.herokuapp.com/");
+//const socket = io("https://huynehihi.herokuapp.com/");
+const socket = io();
 //login
 function login() {
   let username = document.getElementById("username").value.trim();
@@ -59,7 +60,8 @@ function joinroom() {
 socket.on("server_joinroom1", (room) => {
   document.getElementById("room").innerHTML =
     "<h3> You are in " + room + "</h3>";
-  document.getElementById("listchat").innerHTML = "";
+  document.getElementById("listchat").innerHTML =
+    "<li id='chatting' class='chatting'>Someone are chatting </li>";
 });
 // send join room to room
 socket.on("server_joinroomall", (data) => {
@@ -68,12 +70,22 @@ socket.on("server_joinroomall", (data) => {
 //send leave room
 socket.on("server_leaveroom", (data) => {
   updateListUser(data.listuser);
-  displayIschatting(data.chatting);
+  let chatting = data.chatting;
+  if (check == true) {
+    displayIschatting(chatting - 1);
+  } else {
+    displayIschatting(chatting);
+  }
 });
 // disconnect
 socket.on("server_disconnect", (data) => {
   updateListUser(data.listuser);
-  displayIschatting(data.chatting);
+  let chatting = data.chatting;
+  if (check == true) {
+    displayIschatting(chatting - 1);
+  } else {
+    displayIschatting(chatting);
+  }
 });
 // send mess
 function send() {
@@ -122,7 +134,12 @@ function typingTimeout() {
 }
 
 socket.on("server_someonechatting", (chatting) => {
-  displayIschatting(chatting);
+  console.log(chatting);
+  if (check == true) {
+    displayIschatting(chatting - 1);
+  } else {
+    displayIschatting(chatting);
+  }
 });
 
 // update
