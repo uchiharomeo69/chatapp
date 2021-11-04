@@ -14,10 +14,11 @@ app.set("views", "views");
 // set static location
 app.use(express.static("public"));
 // render
-app.get("/", (req, res) => {
+app.use((req, res) => {
   res.render("login");
 });
 // server connection
+
 io.on("connection", (socket) => {
   //console.log(socket.id);
   // login

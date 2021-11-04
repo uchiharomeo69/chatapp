@@ -12,7 +12,10 @@ function displayIschatting(chatting) {
 displayIschatting(0);
 
 // create socket
-//const socket = io("https://huynehihi.herokuapp.com/");
+
+// const socket = io("http://localhost:8082/", {
+//   transports: ["websocket"],
+// });
 const socket = io();
 //login
 function login() {
